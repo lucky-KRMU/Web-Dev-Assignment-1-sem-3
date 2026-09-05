@@ -6,11 +6,20 @@ const http = require('http');
 const server = http.createServer((req, res) => {
     if (req.url === '/'){
         res.writeHead(200, {'content-type': 'text/plain'});
-        res.end("<h1>Hello World!</h1>");
-        log("Heard");
+        res.end("Welcome to the Server");
+    } else if (req.url === '/about'){
+        res.writeHead(200, {'content-type': 'text/plain'});
+        res.end("This is About") 
+    } else if (req.url === '/contact'){
+        res.writeHead(200, {'content-type': 'text/plain'});
+        res.end("This is Contact")
+    } else {
+        res.writeHead(404, {'content-type': 'text/plain'});
+        res.end("404 Not Found")
     }
 })
 
+// setting port and listening it
 const PORT = 1500;
 server.listen(PORT, ()=>{
     log("Server has started...")
